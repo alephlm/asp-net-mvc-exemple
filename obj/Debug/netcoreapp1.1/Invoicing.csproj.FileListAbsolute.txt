@@ -1,0 +1,8 @@
+/home/aleph/projetos/teste/dotnet/Invoicing/bin/Debug/netcoreapp1.1/Invoicing.deps.json
+/home/aleph/projetos/teste/dotnet/Invoicing/bin/Debug/netcoreapp1.1/Invoicing.runtimeconfig.json
+/home/aleph/projetos/teste/dotnet/Invoicing/bin/Debug/netcoreapp1.1/Invoicing.runtimeconfig.dev.json
+/home/aleph/projetos/teste/dotnet/Invoicing/bin/Debug/netcoreapp1.1/Invoicing.dll
+/home/aleph/projetos/teste/dotnet/Invoicing/bin/Debug/netcoreapp1.1/Invoicing.pdb
+/home/aleph/projetos/teste/dotnet/Invoicing/obj/Debug/netcoreapp1.1/Invoicing.AssemblyInfo.cs
+/home/aleph/projetos/teste/dotnet/Invoicing/obj/Debug/netcoreapp1.1/Invoicing.dll
+/home/aleph/projetos/teste/dotnet/Invoicing/obj/Debug/netcoreapp1.1/Invoicing.pdb
