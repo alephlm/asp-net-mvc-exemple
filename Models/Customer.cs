@@ -6,7 +6,8 @@ namespace Invoicing.Models
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public CustomerType type { get; set; }
-        public IEnumerable<Parked> parkeds { get; set;}
+        public CustomerType Type { get; set; }
+        public ICollection<Parked> Parkeds { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
     }
 }

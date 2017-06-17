@@ -10,5 +10,6 @@ namespace TodoApi.Services
         Customer Create(Customer customer);
         bool Delete(long id);
         bool Update(long id, Customer customer);
+        Invoice GenerateInvoice(long id);
     }
 }

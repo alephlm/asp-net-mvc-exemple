@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TodoApi.Services;
 
 namespace Invoicing
 {
@@ -26,9 +27,10 @@ namespace Invoicing
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<CustomerContext>(opt => opt.UseInMemoryDatabase());
-            services.AddDbContext<ParkingContext>(opt => opt.UseInMemoryDatabase());
-            services.AddDbContext<ParkedContext>(opt => opt.UseInMemoryDatabase());
+            services.AddDbContext<InvoicingContext>(opt => opt.UseInMemoryDatabase());
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IParkingService, ParkingService>();
+            services.AddTransient<IParkedService, ParkedService>();
             services.AddMvc();
         }
 
