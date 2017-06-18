@@ -15,7 +15,8 @@ namespace TodoApi.Services
             _context = context;
             if (_context.Customers.Count() == 0)
             {
-                _context.Customers.Add(new Customer { Name = "Custoner one", Type = 0 });
+                _context.Customers.Add(new Customer { Name = "Regular Customer", Type = CustomerType.regular });
+                _context.Customers.Add(new Customer { Name = "Premium Customer", Type = CustomerType.premium });
                 _context.SaveChanges();
             }
         }

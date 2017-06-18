@@ -1,0 +1,28 @@
+<form>
+    <div class="form-group row">
+    <label for="parkingSelect" class="col-2 col-form-label"> Parking: </label>
+    <select class="form-control"  name="parkingSelect" id="parkingSelect" ng-model="vm.parked.parkingId">
+        <option ng-repeat="parking in vm.parkings" value="{{parking.id}}">{{parking.name}}</option>
+    </select>
+    </div>
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date In</label>
+        <div class="col-10">
+            <input class="form-control" type="datetime-local" id="dataLancamento" ng-model="vm.parked.inTime">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date Out</label>
+        <div class="col-10">
+            <input class="form-control" type="datetime-local" id="dataLancamento" ng-model="vm.parked.outTime">
+        </div>
+    </div>
+    <input type="hidden" ng-init="vm.parked.customerId = globals.customer.id" ng-model="vm.parked.customerId" />
+
+    <div class="form-group row">
+        <button type="submit" class="btn btn-primary" ng-click="vm.createParked(vm.parked)">Insert</button>
+    </div>
+    <pre>
+        {{vm.parked}}
+    </pre>
+</form>

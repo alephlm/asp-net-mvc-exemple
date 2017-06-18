@@ -23,6 +23,10 @@ namespace TodoApi.Services
             {
                 throw new Exception("You need to provide valid customerId and parkingId to create a Parked item.");
             }
+            else if(parkedDTO.inTime > parkedDTO.outTime)
+            {
+                throw new Exception("Out date needs to be after In date.");                
+            }
 
             Parked parked = new Parked();
             parked.Customer = customer;

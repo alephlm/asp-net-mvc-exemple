@@ -1,0 +1,19 @@
+<div class="container" ng-init="vm.getCustomer(globals.customer.id)">
+    <h1>Parked list</h1>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Date In</th>
+      <th>Date Out</th>
+      <th>Fee</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="parked in vm.customer.parkeds">
+      <td>{{parked.inTime | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+      <td>{{parked.outTime  | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+      <td>{{parked.value | currency}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
