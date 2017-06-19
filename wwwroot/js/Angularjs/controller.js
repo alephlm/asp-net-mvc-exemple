@@ -1,4 +1,4 @@
-function customerController($window, $rootScope, $cookies, customerFactory, toastr) {
+function customerController($location, $rootScope, $cookies, customerFactory, toastr) {
     var vm = this;
     vm.customers = [];
     vm.customer = {};
@@ -48,6 +48,7 @@ function customerController($window, $rootScope, $cookies, customerFactory, toas
     vm.unsetCustomer = function(){
         $rootScope.globals.customer = {};
         $cookies.putObject('globals', $rootScope.globals);
+        $location.url('/');
     }
 
     vm.generateInvoice = function (id) {

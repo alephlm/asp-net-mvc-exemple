@@ -33,7 +33,7 @@ namespace Invoicing.Controllers
                 _logger.LogWarning(0, "||| Customer not found |||");
                 return NotFound();
             }
-            _logger.LogInformation(0, "||| Retrieved customer {c} |||", customer.Name);
+            _logger.LogInformation(0, "||| Retrieved customer: {c} |||", customer.Name);
             return new ObjectResult(customer);
         }
 
@@ -47,7 +47,7 @@ namespace Invoicing.Controllers
             }
 
             _service.Create(customer);
-            _logger.LogInformation(0, "||| Created customer {c} |||", customer.Name);
+            _logger.LogInformation(0, "||| Created customer: {c} |||", customer.Name);
     
             return CreatedAtRoute("GetCustomer", new { id = customer.Id }, customer);
         }
@@ -62,7 +62,7 @@ namespace Invoicing.Controllers
                 return BadRequest();
             }
             if (invoice.Id > 0)
-                _logger.LogInformation(0, "||| Created invoice of ${c} |||", invoice.Total);
+                _logger.LogInformation(0, "||| Created invoice of: ${c} |||", invoice.Total);
             return new ObjectResult(invoice);
         }
     }
