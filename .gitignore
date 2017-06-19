@@ -46,4 +46,10 @@ bower_components
 !.vscode/launch.json
 !.vscode/extensions.json
 
+## .NET ###
+/bin/*
+/obj/*
+/Test/obj/*
+/Test/bin/*
+
 # End of https://www.gitignore.io/api/bower,angular,visualstudiocode
