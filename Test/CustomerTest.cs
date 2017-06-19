@@ -182,5 +182,27 @@ namespace Invoicing.Test.Services
             
             Assert.Equal(0, secondInvoice.MonthlyFee);
         }
+
+        [Fact]
+        public void PremiumCustomerChargedNoMoreThan300()
+        {
+            long customerId = _customerService.GetAll().Where(c => c.Type == CustomerType.premium).FirstOrDefault().Id;            
+            long parkingId = _parkingService.GetAll().FirstOrDefault().Id;
+
+            DateTime eight12 =      new DateTime(2017, 6, 20, 8, 12, 0);
+            DateTime ten45 =        new DateTime(2017, 9, 20, 10, 45, 0);
+
+            ParkedDTO p1 = new ParkedDTO();
+            p1.inTime = eight12;
+            p1.outTime = ten45;
+            p1.customerId = customerId;
+            p1.parkingId = parkingId;
+            _parkedService.Create(p1);
+
+            _customerService.GenerateInvoice(customerId);
+            var invoice = _customerService.GetById(customerId).Invoices.LastOrDefault();
+            
+            Assert.Equal(300, invoice.Total);
+        }
     }
 }

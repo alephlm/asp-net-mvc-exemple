@@ -1,7 +1,7 @@
 # Invoicing - parking
 
 ## Architecture, Decisions and Assumptions
-- It was done using .NET Core with VSCode in a linux enviroment, so is multi-plataform ready.
+- Project was done using [.NET Core](https://www.microsoft.com/net/download/core) with VSCode in a linux environment, so is multi-plataform ready.
 - An API was built not only for data import but for entire system. So you have full acces by using REST methods for dealing with entities.
 - Front-end was built as a Single Page Application Angularjs. Works sending and receiving json data.
 - Database used is InMemory. When the server stops it wipes all.
@@ -15,7 +15,7 @@
 - Invoice - Holds a list of parked items and a total value based on customer type.
 
 ## Setup
-### This setup uses .NET core command line tool. You need .NET Core installed.
+### This setup uses .NET core command line tool. You need [.NET Core](https://www.microsoft.com/net/download/core) installed.
 ### Running application:
 - first install javascript dependencies with bower:  
 ```sh
@@ -25,6 +25,17 @@ bower install
 ```sh 
 dotnet restore
 ```
+- Set environment variable to development  
+
+Windows
+```sh
+C:\> set ASPNETCORE_ENVIRONMENT=Development
+```
+Unix
+```sh
+$ export ASPNETCORE_ENVIRONMENT=Development
+```
+
 - Then run application:  
 ```sh 
 dotnet run
