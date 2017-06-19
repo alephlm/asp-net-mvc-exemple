@@ -40,7 +40,7 @@ $ export ASPNETCORE_ENVIRONMENT=Development
 ```sh 
 dotnet run
 ```  
-it will start at localhost:5000.
+it will start at `http://localhost:5000`.
 
 ### Executing tests:
 - For unit test execution you need to run xunit:
