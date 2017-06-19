@@ -17,7 +17,7 @@
 ## Setup
 ### This setup uses .NET core command line tool. You need [.NET Core](https://www.microsoft.com/net/download/core) installed.
 ### Running application:
-- first install javascript dependencies with bower:  
+- first install javascript dependencies with [bower](https://bower.io/):  
 ```sh
 bower install
 ```
