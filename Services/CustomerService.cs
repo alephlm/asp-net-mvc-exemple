@@ -54,6 +54,10 @@ namespace Invoicing.Services
                 invoice.Parkeds = noInvoicedParkeds;
                 invoice.MonthlyFee = anyChargedThisMonth ? 0 : 20;
                 invoice.Total = noInvoicedParkeds.Sum(i => i.Value) + invoice.MonthlyFee;
+                if(customer.Type == CustomerType.premium && invoice.Total > 300)
+                {
+                    invoice.Total = 300;
+                }
                 
                 _context.Invoices.Add(invoice);
                 _context.SaveChanges();

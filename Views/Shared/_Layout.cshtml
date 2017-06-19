@@ -34,11 +34,11 @@
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="customerController as vm" ng-init="vm.getCustomers()">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" ng-if="globals.customer.name != null">
           <li><a href="/#!/parkinginfo">Parking Info</a></li>
           <li><a href="/#!/invoices">Invoices</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right"  ng-if="globals.customer.name != null">
           <li class="dropdown">
             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Insert <span class="caret"></span></a>
             <ul class="dropdown-menu">
