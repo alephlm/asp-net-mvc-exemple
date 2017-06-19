@@ -11,9 +11,6 @@
     "angular-animate": "1.6.4",
     "angular-cookies": "1.6.4",
     "angular-sanitize": "1.6.4",
-    "sweetalert": "latest",
-    "angular-sweetalert": "latest",
-    "angular-toastr" : "latest",
-    "angular-ui-select": "latest"
+    "angular-toastr" : "latest"
   }
 }

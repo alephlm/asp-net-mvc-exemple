@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Invoicing.Models;
 
-namespace TodoApi.Services
+namespace Invoicing.Services
 {
     public class ParkingService : IParkingService
     {

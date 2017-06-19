@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Invoicing.Models;
 
-namespace TodoApi.Services
+namespace Invoicing.Services
 {
     public interface IParkedService
     {

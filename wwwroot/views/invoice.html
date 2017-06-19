@@ -1,41 +1,45 @@
-<div class="container" ng-init="vm.getCustomer(globals.customer.id)">
-    <div class="col-md-6">
-        <h1>Invoice list</h1>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Monthly Fee</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-click="vm.invoicemodel = invoice" ng-repeat="invoice in vm.customer.invoices">
-                    <td>{{invoice.created | date:"MM/dd/yyyy"}}</td>
-                    <td>{{invoice.monthlyFee | currency}}</td>
-                    <td>{{invoice.total | currency}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <button class="btn btn-primary" ng-click="vm.generateInvoice(globals.customer.id)">New Invoice</button>
+<div class="row" ng-init="vm.getCustomer(globals.customer.id)">
+    <div class="row col-md-12" ng-if="vm.customer.invoices.length > 0">
+        <div class="col-md-6">
+            <p class="h1">Invoice list</p>
+            <table class="table table-hover" role="button">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Monthly Fee</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-click="vm.invoicemodel = invoice" ng-repeat="invoice in vm.customer.invoices">
+                        <td>{{invoice.created | date:"MM/dd/yyyy"}}</td>
+                        <td>{{invoice.monthlyFee | currency}}</td>
+                        <td>{{invoice.total | currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <p class="h1">Invoice detail</p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date In</th>
+                        <th>Date Out</th>
+                        <th>Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="parked in vm.invoicemodel.parkeds">
+                        <td>{{parked.inTime | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+                        <td>{{parked.outTime | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+                        <td>{{parked.value | currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="col-md-6">
-        <h1>Invoice details</h1>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Date In</th>
-                    <th>Date Out</th>
-                    <th>Fee</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="parked in vm.invoicemodel.parkeds">
-                    <td>{{parked.inTime | date:"MM/dd/yyyy 'at' h:mma"}}</td>
-                    <td>{{parked.outTime  | date:"MM/dd/yyyy 'at' h:mma"}}</td>
-                    <td>{{parked.value | currency}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-md-12">
+        <button class="btn btn-primary" ng-click="vm.generateInvoice(globals.customer.id)">New Invoice</button>
     </div>
 </div>

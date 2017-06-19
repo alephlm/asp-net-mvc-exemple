@@ -4,7 +4,7 @@ using System.Linq;
 using Invoicing.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace TodoApi.Services
+namespace Invoicing.Services
 {
     public class CustomerService : ICustomerService
     {
@@ -61,7 +61,7 @@ namespace TodoApi.Services
             } 
             else
             {
-                return null;
+                return new Invoice();
             }
         }
 

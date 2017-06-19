@@ -1,4 +1,4 @@
-function customerController($window, $rootScope, $cookies, customerFactory, SweetAlert, toastr) {
+function customerController($window, $rootScope, $cookies, customerFactory, toastr) {
     var vm = this;
     vm.customers = [];
     vm.customer = {};
@@ -9,11 +9,14 @@ function customerController($window, $rootScope, $cookies, customerFactory, Swee
             .then(function (customers) {
                 vm.customers = customers.data;
                 $rootScope.globals.customers = customers.data;
+                if(!customers.data.length){
+                    $rootScope.globals.customer = "";
+                }
                 var cookieExp = new Date();
                 cookieExp.setDate(cookieExp.getDate() + 7);
                 $cookies.putObject('globals', $rootScope.globals, { expires: cookieExp });
             }).catch(function (error) {
-                SweetAlert.swal("Error while getting customers.")
+                toastr.error('Error getting customers!', 'Error!');
             });
     }
 
@@ -42,10 +45,19 @@ function customerController($window, $rootScope, $cookies, customerFactory, Swee
             });
     }
 
+    vm.unsetCustomer = function(){
+        $rootScope.globals.customer = {};
+        $cookies.putObject('globals', $rootScope.globals);
+    }
+
     vm.generateInvoice = function (id) {
         customerFactory.generateInvoice(id)
             .then(function (invoice) {
-                vm.customer.invoices.push(invoice.data);
+                if(!invoice.data.parkeds){
+                    toastr.warning("You don't have any parked item for invoicing.", 'Info');
+                } else {
+                    vm.customer.invoices.push(invoice.data);
+                }
             })
             .catch(function (error) {
                 toastr.error('Error generating invoice!', 'Error!');
@@ -54,14 +66,12 @@ function customerController($window, $rootScope, $cookies, customerFactory, Swee
     }
 };
 
-function invoiceController($rootScope, $cookies, customerFactory, SweetAlert, toastr) {
-    var vm = this;
-}
-function parkedController($rootScope, $cookies, parkedFactory, parkingFactory, SweetAlert, toastr) {
+function parkedController($rootScope, $location, $cookies, parkedFactory, parkingFactory, toastr) {
     var vm = this;
     vm.parked = {};
-    vm.parked.inTime = new Date();
-    vm.parked.outTime = new Date();
+    var today = new Date();
+    vm.parked.inTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), today.getHours(), today.getMinutes());
+    vm.parked.outTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), today.getHours(), today.getMinutes());
     vm.parkings = [];
 
     vm.getParkings = getParkings;
@@ -82,9 +92,10 @@ function parkedController($rootScope, $cookies, parkedFactory, parkingFactory, S
         parkedFactory.createParked(parked)
             .then(function (result) {
                 toastr.success('Item inserted!', 'Success!');
+                $location.url('/parkinginfo');
             })
             .catch(function (error) {
-                toastr.error('Error saving parked info!', 'Error!');
+                toastr.error('Error saving parked info! ' + error.data, 'Error!');
                 console.log(error)
             });
     }
@@ -94,6 +105,5 @@ function parkedController($rootScope, $cookies, parkedFactory, parkingFactory, S
 }
 angular
     .module('app')
-    .controller("invoiceController", invoiceController)
     .controller("parkedController", parkedController)
     .controller("customerController", customerController);

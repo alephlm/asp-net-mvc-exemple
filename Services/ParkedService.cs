@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Invoicing.Models;
 
-namespace TodoApi.Services
+namespace Invoicing.Services
 {
     public class ParkedService : IParkedService
     {
@@ -25,7 +25,7 @@ namespace TodoApi.Services
             }
             else if(parkedDTO.inTime > parkedDTO.outTime)
             {
-                throw new Exception("Out date needs to be after In date.");                
+                throw new Exception("'Date Out' have to be greater than 'Date In'.");                
             }
 
             Parked parked = new Parked();

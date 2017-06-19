@@ -1,6 +1,6 @@
 (function () {
 	angular
-		.module('app', ['ngRoute', 'oitozero.ngSweetAlert', 'ngCookies', 'ngAnimate', 'toastr'])
+		.module('app', ['ngRoute', 'ngCookies', 'ngAnimate', 'toastr'])
 		.config(function (toastrConfig, $routeProvider, $locationProvider) {
 			angular.extend(toastrConfig, {
 				positionClass: 'toast-bottom-right',

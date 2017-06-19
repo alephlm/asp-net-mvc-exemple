@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Invoicing.Models;
 using Microsoft.AspNetCore.Mvc;
-using TodoApi.Services;
+using Invoicing.Services;
 
 namespace Invoicing.Controllers
 {
