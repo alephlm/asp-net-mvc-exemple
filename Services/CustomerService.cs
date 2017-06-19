@@ -30,10 +30,7 @@ namespace Invoicing.Services
 
         public bool Delete(long id)
         {
-            var todo = _context.Customers.First(t => t.Id == id);
-            _context.Customers.Remove(todo);
-            _context.SaveChanges();
-            return todo != null ? true : false;
+            throw new NotImplementedException();
         }
 
         public Invoice GenerateInvoice(long id)
